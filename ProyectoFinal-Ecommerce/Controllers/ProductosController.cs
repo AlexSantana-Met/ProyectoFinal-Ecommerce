@@ -78,7 +78,7 @@ namespace ProyectoFinal_Ecommerce.Controllers
             productos.stat = 1;
             productos.img = "BatidoD.jpg";
             productos.id_categoria = 1;
-            productos.id_proveedor = 1;
+            productos.id_proveedor = productos.id_proveedor;
 
             if (ModelState.IsValid)
             {

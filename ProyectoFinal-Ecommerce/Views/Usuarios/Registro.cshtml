@@ -67,10 +67,16 @@
                                             @Html.DropDownListFor(model => model.role_id, new SelectList(
                                             new List<Object> {new {value = 0, text="Selecciona opción"},
                                                                 new { value = 3, text="Administrador ventas"},
-                                                                new { value = 4, text="Administrador compras"},
-                                                                new { value = 5, text="Administrador embarques"}},
+                                                                new { value = 4, text="Administrador compras"}},
                                                             "value","text"), new { @class = "form-control"})
                                             @Html.ValidationMessageFor(model => model.role_id, "", new { @class = "text-danger" })
+                                            @*@Html.DropDownListFor(model => model.role_id, new SelectList(
+                                                new List<Object> {new {value = 0, text="Selecciona opción"},
+                                                                    new { value = 3, text="Administrador ventas"},
+                                                                    new { value = 4, text="Administrador compras"},
+                                                                    new { value = 5, text="Administrador embarques"}},
+                                                                "value","text"), new { @class = "form-control"})
+                                                @Html.ValidationMessageFor(model => model.role_id, "", new { @class = "text-danger" })*@
 
                                         </div>
                                     </div>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbEcommerce.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DbEcommerce.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -38,9 +38,9 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="id_proveedor" Type="int" Nullable="false" />
-          <Property Name="subtotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="iva" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subtotal" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="iva" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stat" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Contacto">
@@ -61,8 +61,8 @@
           <Property Name="id_producto" Type="int" Nullable="false" />
           <Property Name="id_compra" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
-          <Property Name="precio_compra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="precio_venta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precio_compra" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stat" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Detalle_Ventas">
@@ -167,8 +167,7 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbEcommerce" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -205,9 +204,9 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_proveedor" Type="Int32" Nullable="false" />
-          <Property Name="subtotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="iva" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="iva" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stat" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Contacto">
@@ -228,8 +227,8 @@
           <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="id_compra" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="precio_compra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="precio_venta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precio_compra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="stat" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Detalle_Ventas">

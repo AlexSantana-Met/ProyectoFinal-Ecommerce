@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Models\Contacto.cs">
       <DependentUpon>ModelEcommerce.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DetalleCompraModel.cs" />
     <Compile Include="Models\DetalleVentaModel.cs" />
     <Compile Include="Models\Detalle_Compras.cs">
       <DependentUpon>ModelEcommerce.tt</DependentUpon>
@@ -338,6 +340,9 @@
     <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\Ventas\AllVentas.cshtml" />
     <Content Include="Views\Ventas\DetalleVenta.cshtml" />
+    <Content Include="Views\Compras\DetalleCompra.cshtml" />
+    <Content Include="Views\Compras\AllCompras.cshtml" />
+    <Content Include="Views\Compras\ComprasRealizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

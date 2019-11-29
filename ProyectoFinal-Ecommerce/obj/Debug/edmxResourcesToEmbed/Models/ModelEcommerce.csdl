@@ -33,9 +33,9 @@
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="id_proveedor" Type="Int32" Nullable="false" />
-    <Property Name="subtotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="iva" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="iva" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="stat" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Contacto">
@@ -56,8 +56,8 @@
     <Property Name="id_producto" Type="Int32" Nullable="false" />
     <Property Name="id_compra" Type="Int32" Nullable="false" />
     <Property Name="cantidad" Type="Int32" Nullable="false" />
-    <Property Name="precio_compra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="precio_venta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="precio_compra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="precio_venta" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="stat" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Detalle_Ventas">

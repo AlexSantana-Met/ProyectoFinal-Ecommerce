@@ -17,41 +17,37 @@ namespace ProyectoFinal_Ecommerce.Models
     {
         [Required]
         public int id { get; set; }
-
         [Required]
+        [StringLength(30, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
         [Display(Name = "Nombre*")]
-        [StringLength(30, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         public string nombre { get; set; }
         [Required]
+        [StringLength(500, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 20)]
         [Display(Name = "Descripción*")]
-        [StringLength(30, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         public string descripcion { get; set; }
-        
+        [Required]
         public int id_categoria { get; set; }
-
         [Required]
         [Display(Name = "Cantidad*")]
         public int cantidad { get; set; }
-
         [Required]
         [Display(Name = "Proveedor*")]
         public int id_proveedor { get; set; }
-
         [Required]
         [Display(Name = "Precio de compra*")]
         public decimal precio_compra { get; set; }
-
         [Required]
         [Display(Name = "Precio de venta*")]
         public decimal precio_venta { get; set; }
-
         [Required]
         [Display(Name = "Stock*")]
         public int stock { get; set; }
-
         [Required]
         public int stat { get; set; }
+        
+        [Display(Name = "img*")]
         public string img { get; set; }
+        [Display(Name = "Calificación*")]
         public Nullable<decimal> calificacion { get; set; }
     }
 }

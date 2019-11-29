@@ -17,7 +17,7 @@
     <br />
     <br />
     <div class="row">
-        <div class="col-sm-4" style="text-align:center">
+        <div class="col-sm-6" style="text-align:center">
             <div class="card">
                 <img src="~/Content/Imagenes/listar.png" style="width:60%" />
                 <p> @Html.ActionLink(" Listar Empleados", "ListarEmpleados", "Usuarios", new { area = "" }, new { @class = "btn" })</p>
@@ -25,17 +25,10 @@
             </div>
         </div>
 
-        <div class="col-sm-4" style="text-align:center">
+        <div class="col-sm-6" style="text-align:center">
             <div class="card">
                 <img src="~/Content/Imagenes/agregar.png" style="width:60%" />
                 <p>@Html.ActionLink("Ingresar Empleado", "Registro", "Usuarios", new { area = "" }, new { @class = "btn" })</p>
-            </div>
-        </div>
-        <div class="col-sm-4" style="text-align:center">
-            <div class="card">
-                <!--<img src="~/Content/Imagenes/Envios.jpg" style="width:90%;" />-->
-                <p>@Html.ActionLink("Editar", "Perfil", "Usuarios", new { area = "" }, new { @class = "btn" })</p>
-
             </div>
         </div>
     </div>

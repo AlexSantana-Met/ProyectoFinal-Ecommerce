@@ -15,29 +15,28 @@ namespace ProyectoFinal_Ecommerce.Models
 
     public partial class Proveedores
     {
-
         [Required]
         public int id { get; set; }
         [Required]
+        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
         [Display(Name = "Razon Social*")]
-        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         public string razon_social { get; set; }
         [Required]
-        [Display(Name = "RFC*")]
         [StringLength(15, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 13)]
+        [Display(Name = "RFC*")]
         public string rfc { get; set; }
         [Required]
+        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 10)]
         [Display(Name = "Dirección*")]
-        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         public string direccion { get; set; }
         [Required]
-        [Display(Name = "Teléfono*")]
         [StringLength(13, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 10)]
+        [Display(Name = "Teléfono*")]
         public string telefono { get; set; }
         [Required]
         [EmailAddress]
-        [Display(Name = "Correo*")]
         [StringLength(30, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 10)]
+        [Display(Name = "Correo*")]
         public string correo { get; set; }
         [Required]
         public int stat { get; set; }
