@@ -60,24 +60,28 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).id != Model.id)
+                                {
+                                    <div class="col-md-4" style="padding-right: 30px;">
+                                        <div class="form-group">
+                                            <div id="contacts_birthday" class="field text-field">
+                                                <div id="contacts_phone" class="field text-field">
 
-                                <div class="col-md-4" style="padding-right: 30px;">
-                                    <div class="form-group">
-                                        <div id="contacts_birthday" class="field text-field">
-                                            <div id="contacts_phone" class="field text-field">
+                                                    @Html.LabelFor(model => model.role_id, htmlAttributes: new { @class = "control-label col-md-2" })
 
-                                                @Html.LabelFor(model => model.role_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.DropDownListFor(model => model.role_id, new SelectList(
+                                                    new List<Object> { new { value = 0, text="Selecciona una opción"},
+                                                                        new { value = 2, text="Super Admin"},
+                                                                        new { value = 3, text="Administrador ventas"},
+                                                                        new { value = 4, text="Administrador compras"}},
+                                                                    "value","text"), new { @class = "form-control"})
+                                                    @Html.ValidationMessageFor(model => model.role_id, "", new { @class = "text-danger", @id="role"})
 
-                                                @Html.DropDownListFor(model => model.role_id, new SelectList(
-                                                new List<Object> { new { value = 2, text="Administrador compras"},
-                                                                    new { value = 3, text="Administrador ventas"}},
-                                                                "value","text"), new { @class = "form-control"})
-                                                @Html.ValidationMessageFor(model => model.role_id, "", new { @class = "text-danger" })
-
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         </div>
 

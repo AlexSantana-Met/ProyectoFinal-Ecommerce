@@ -11,19 +11,28 @@ namespace ProyectoFinal_Ecommerce.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuarios
     {
         public int id { get; set; }
         public string nombre { get; set; }
+        [Display(Name = "Apellido paterno")]
         public string apellido_paterno { get; set; }
+        [Display(Name = "Apellido materno")]
         public string apellido_materno { get; set; }
+        [Display(Name = "Correo")]
         public string correo { get; set; }
+        [Display(Name = "Contraseña")]
         public string pass { get; set; }
         public int status { get; set; }
+        [Display(Name = "Rol")]
         public int role_id { get; set; }
+        [Display(Name = "Fecha de nacimiento")]
         public Nullable<System.DateTime> fecha_nacimiento { get; set; }
+        [Display(Name = "Teléfono")]
         public string telefono { get; set; }
+        [Display(Name = "Nombre de usuario")]
         public string username { get; set; }
     }
 }

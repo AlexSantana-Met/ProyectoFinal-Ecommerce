@@ -44,29 +44,16 @@
                             ProyectoFinal_Ecommerce.Models.Usuarios us = (ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"];
                             if (us != null && us.role_id > 0)
                             {
+
                                 @*if (us.role_id == 2 || us.role_id == 4)
-                                {
-                                    @Html.ActionLink(" CATEGORIAS", "Index", "Categorias", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })
-                                    <hr />
-                                }*@
-                                if (us.role_id == 2 || us.role_id == 4)
+                                    {
+                                        @Html.ActionLink(" CATEGORIAS", "Index", "Categorias", new { area = "" }, new { @class = "glyphicon glyphicon-th-list" })
+                                        <hr />
+                                    }*@
+
+                                if (us.role_id == 2 || us.role_id == 3)
                                 {
                                     @Html.ActionLink(" PRODUCTOS", "Index", "Productos", new { area = "" }, new { @class = "glyphicon glyphicon-th" })
-                                    <hr />
-                                }
-                                if (us.role_id == 2 || us.role_id == 4)
-                                {
-                                    @Html.ActionLink(" PROVEEDORES", "Index", "Proveedores", new { area = "" }, new { @class = "glyphicon glyphicon-bishop" })
-                                    <hr />
-                                }
-                                @*if (us.role_id == 2)
-                                {
-                                    @Html.ActionLink(" ROLES", "Index", "Roles", new { area = "" }, new { @class = "glyphicon glyphicon-check" })
-                                    <hr />
-                                }*@
-                                if (us.role_id == 2)
-                                {
-                                    @Html.ActionLink(" EMPLEADOS", "VistaPanelUsuarios", "Usuarios", new { area = "" }, new { @class = "glyphicon glyphicon-user" })
                                     <hr />
                                 }
 
@@ -76,17 +63,36 @@
                                     <hr />
                                 }
 
-                                @*if (us.role_id == 2 || us.role_id == 5)
+                                if (us.role_id == 2 || us.role_id == 4)
                                 {
-                                    @Html.ActionLink(" EMBARQUE", "Index", "Embarque", new { area = "" }, new { @class = "glyphicon glyphicon-plane" })
+                                    @Html.ActionLink(" PROVEEDORES", "Index", "Proveedores", new { area = "" }, new { @class = "glyphicon glyphicon-bishop" })
                                     <hr />
-                                }*@
+                                }
+
+                                @*if (us.role_id == 2 || us.role_id == 5)
+                                    {
+                                        @Html.ActionLink(" EMBARQUE", "Index", "Embarque", new { area = "" }, new { @class = "glyphicon glyphicon-plane" })
+                                        <hr />
+                                    }*@
 
                                 if (us.role_id == 2 || us.role_id == 4)
                                 {
                                     @Html.ActionLink(" COMPRAS", "AllCompras", "Compras", new { area = "" }, new { @class = "glyphicon glyphicon-barcode" })
                                     <hr />
                                 }
+
+                                if (us.role_id == 2)
+                                {
+                                    @Html.ActionLink(" EMPLEADOS", "ListarEmpleados", "Usuarios", new { area = "" }, new { @class = "glyphicon glyphicon-user" })
+                                    <hr />
+                                }
+
+                                if (us.role_id == 2)
+                                {
+                                    @Html.ActionLink(" ROLES", "ListarRolesIndex", "Roles", new { area = "" }, new { @class = "glyphicon glyphicon-check" })
+                                    <hr />
+                                }
+
                             }
                         }
                     </div>

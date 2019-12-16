@@ -65,7 +65,8 @@
                                             @Html.LabelFor(model => model.role_id, htmlAttributes: new { @class = "control-label col-md-2" })
 
                                             @Html.DropDownListFor(model => model.role_id, new SelectList(
-                                            new List<Object> {new {value = 0, text="Selecciona opción"},
+                                            new List<Object> { new { value = 0, text="Selecciona una opción"},
+                                                                new { value = 2, text="Super Admin"},
                                                                 new { value = 3, text="Administrador ventas"},
                                                                 new { value = 4, text="Administrador compras"}},
                                                             "value","text"), new { @class = "form-control"})

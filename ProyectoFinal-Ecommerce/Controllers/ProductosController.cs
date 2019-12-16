@@ -24,7 +24,7 @@ namespace ProyectoFinal_Ecommerce.Controllers
             Usuarios s = (Usuarios)Session["admin"];
             if (s != null)
             {
-                if (s.role_id == 4 || s.role_id == 2)
+                if (s.role_id == 3 || s.role_id == 2)
                 {
                     return View(db.Productos.ToList());
                 }
@@ -39,12 +39,16 @@ namespace ProyectoFinal_Ecommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Productos productos = db.Productos.Find(id);
-            if (productos == null)
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 2 || ((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 3)
             {
-                return HttpNotFound();
+                Productos productos = db.Productos.Find(id);
+                if (productos == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(productos);
             }
-            return View(productos);
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Productos/Create
@@ -53,7 +57,7 @@ namespace ProyectoFinal_Ecommerce.Controllers
             Usuarios s = (Usuarios)Session["admin"];
             if (s != null)
             {
-                if (s.role_id == 4 || s.role_id == 2)
+                if (s.role_id == 3 || s.role_id == 2)
                 {
                     return View();
                 }
@@ -96,7 +100,7 @@ namespace ProyectoFinal_Ecommerce.Controllers
             Usuarios s = (Usuarios)Session["admin"];
             if (s != null)
             {
-                if (s.role_id == 4 || s.role_id == 2)
+                if (s.role_id == 3 || s.role_id == 2)
                 {
                     if (id == null)
                     {
@@ -111,7 +115,7 @@ namespace ProyectoFinal_Ecommerce.Controllers
                 }
             }
             return View("Index", "Home");
-            
+
         }
 
         // POST: Productos/Edit/5
@@ -137,12 +141,17 @@ namespace ProyectoFinal_Ecommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Productos productos = db.Productos.Find(id);
-            if (productos == null)
+
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 2 || ((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 3)
             {
-                return HttpNotFound();
+                Productos productos = db.Productos.Find(id);
+                if (productos == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(productos);
             }
-            return View(productos);
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Productos/Delete/5

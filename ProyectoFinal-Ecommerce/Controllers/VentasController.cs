@@ -17,43 +17,52 @@ namespace ProyectoFinal_Ecommerce.Controllers
         // GET: Ventas
         public ActionResult AllVentas()
         {
-
-            List<Ventas> ventas = _unitToWork.GetRepositoryInstance<Ventas>().GetAllRecords().ToList();
-            return View(ventas);
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 2 || ((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 3)
+            {
+                List<Ventas> ventas = _unitToWork.GetRepositoryInstance<Ventas>().GetAllRecords().ToList();
+                return View(ventas);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult DetalleVenta(int? id) {
+        public ActionResult DetalleVenta(int? id)
+        {
             if (id == null)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            DetalleVentaModel model = new DetalleVentaModel();
-            model.venta = _unitToWork.GetRepositoryInstance<Ventas>().GetFirstorDefaultByParameter(i => i.id == id);
-
-            Usuarios usuario = _unitToWork.GetRepositoryInstance<Usuarios>().GetFirstorDefaultByParameter(i => i.id == model.venta.id_usuario);
-            usuario.pass = "";
-            usuario.fecha_nacimiento = null;
-            usuario.telefono = "";
-
-            model.usuario = usuario;
-
-            List<Detalle_Ventas> lista = _unitToWork.GetRepositoryInstance<Detalle_Ventas>().GetListParameter(i => i.id_venta == id).ToList();
-            List<ProductoVentaModel> pro = new List<ProductoVentaModel>();
-
-            foreach (Detalle_Ventas dv in lista)
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 2 || ((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 3)
             {
-                ProductoVentaModel n = new ProductoVentaModel();
-                n.cantidad = dv.cantidad;
-                n.id = dv.id_producto;
-                n.precio_venta = dv.precio_venta;
-                n.nombre = _unitToWork.GetRepositoryInstance<Productos>().GetFirstorDefaultByParameter(i => i.id == dv.id_producto).nombre;
-                pro.Add(n);
+                DetalleVentaModel model = new DetalleVentaModel();
+                model.venta = _unitToWork.GetRepositoryInstance<Ventas>().GetFirstorDefaultByParameter(i => i.id == id);
+
+                Usuarios usuario = _unitToWork.GetRepositoryInstance<Usuarios>().GetFirstorDefaultByParameter(i => i.id == model.venta.id_usuario);
+                usuario.pass = "";
+                usuario.fecha_nacimiento = null;
+                usuario.telefono = "";
+
+                model.usuario = usuario;
+
+                List<Detalle_Ventas> lista = _unitToWork.GetRepositoryInstance<Detalle_Ventas>().GetListParameter(i => i.id_venta == id).ToList();
+                List<ProductoVentaModel> pro = new List<ProductoVentaModel>();
+
+                foreach (Detalle_Ventas dv in lista)
+                {
+                    ProductoVentaModel n = new ProductoVentaModel();
+                    n.cantidad = dv.cantidad;
+                    n.id = dv.id_producto;
+                    n.precio_venta = dv.precio_venta;
+                    n.nombre = _unitToWork.GetRepositoryInstance<Productos>().GetFirstorDefaultByParameter(i => i.id == dv.id_producto).nombre;
+                    pro.Add(n);
+                }
+
+                model.products = pro;
+
+                return View(model);
             }
+            return RedirectToAction("Index", "Home");
 
-            model.products = pro;
-
-            return View(model);
         }
 
     }

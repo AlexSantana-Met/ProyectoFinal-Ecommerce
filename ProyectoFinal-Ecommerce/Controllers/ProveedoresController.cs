@@ -52,23 +52,27 @@ namespace ProyectoFinal_Ecommerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Proveedores proveedores)
         {
-            Proveedores s = _unitToWork.GetRepositoryInstance<Proveedores>().GetLastRecord();
-
-            if (s != null)
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 2 || ((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 4)
             {
-                proveedores.id = s.id + 1;
+                Proveedores s = _unitToWork.GetRepositoryInstance<Proveedores>().GetLastRecord();
+
+                if (s != null)
+                {
+                    proveedores.id = s.id + 1;
+                }
+
+                proveedores.stat = 1;
+
+                if (ModelState.IsValid)
+                {
+                    db.Proveedores.Add(proveedores);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(proveedores);
             }
-
-            proveedores.stat = 1;
-
-            if (ModelState.IsValid)
-            {
-                db.Proveedores.Add(proveedores);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(proveedores);
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Proveedores/Edit/5
@@ -78,12 +82,16 @@ namespace ProyectoFinal_Ecommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Proveedores proveedores = db.Proveedores.Find(id);
-            if (proveedores == null)
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 2 || ((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 4)
             {
-                return HttpNotFound();
+                Proveedores proveedores = db.Proveedores.Find(id);
+                if (proveedores == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(proveedores);
             }
-            return View(proveedores);
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Proveedores/Edit/5
@@ -109,12 +117,17 @@ namespace ProyectoFinal_Ecommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Proveedores proveedores = db.Proveedores.Find(id);
-            if (proveedores == null)
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 2 || ((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id == 4)
             {
-                return HttpNotFound();
+                Proveedores proveedores = db.Proveedores.Find(id);
+                if (proveedores == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(proveedores);
+
             }
-            return View(proveedores);
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Proveedores/Delete/5

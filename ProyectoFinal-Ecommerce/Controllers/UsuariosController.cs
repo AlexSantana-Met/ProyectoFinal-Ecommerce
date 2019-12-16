@@ -26,6 +26,10 @@ namespace ProyectoFinal_Ecommerce.Controllers
         [AllowAnonymous]
         public ActionResult Registro()
         {
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id != 2)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -34,6 +38,11 @@ namespace ProyectoFinal_Ecommerce.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Registro(UsuarioModel model)
         {
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id != 2)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (ModelState.IsValid)
             {
                 if (model.role_id == 0)
@@ -115,7 +124,12 @@ namespace ProyectoFinal_Ecommerce.Controllers
             {
                 return RedirectToAction("VistaPanelUsuarios");
             }
-           
+
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id != 2)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             Usuarios u = _unitOfWork.GetRepositoryInstance<Usuarios>().GetFirstorDefaultByParameter(i => i.id == id);
 
             UsuarioModelEdit model = new UsuarioModelEdit()
@@ -125,7 +139,7 @@ namespace ProyectoFinal_Ecommerce.Controllers
                 apellido_paterno = u.apellido_paterno,
                 nombre = u.nombre,
                 username = u.username,
-
+                role_id = u.role_id,
                 correo = u.correo
             };
 
@@ -135,6 +149,10 @@ namespace ProyectoFinal_Ecommerce.Controllers
         [HttpPost]
         public ActionResult EditarPerfil(UsuarioModelEdit model)
         {
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id != 2)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (ModelState.IsValid)
             {
                 Usuarios newUser = _unitOfWork.GetRepositoryInstance<Usuarios>().GetFirstorDefaultByParameter(i => i.id == model.id);
@@ -164,6 +182,10 @@ namespace ProyectoFinal_Ecommerce.Controllers
 
         public ActionResult ListarEmpleados()
         {
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id != 2)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var ent = new Entities();
             return View(ent.Usuarios.ToList());
         }
@@ -173,6 +195,10 @@ namespace ProyectoFinal_Ecommerce.Controllers
             if (id == null)
             {
                 return RedirectToAction("VistaPanelUsuarios");
+            }
+            if (((ProyectoFinal_Ecommerce.Models.Usuarios)Session["mom"]).role_id != 2)
+            {
+                return RedirectToAction("Index", "Home");
             }
             Usuarios u = _unitOfWork.GetRepositoryInstance<Usuarios>().GetFirstorDefaultByParameter(i => i.id == id);
 
